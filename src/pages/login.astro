@@ -1,0 +1,213 @@
+---
+import '../styles/reset.css';
+import '../styles/global.css';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="ログインページ">
+	<main>
+        <form class="form box" id="js-form">
+            <div class="form__title" id="is-form-title">
+                <h1 class="title form__title-text">▶︎ Login</h1>
+                <a class="form__title-link" href="./register.html">Sign Up</a>
+            </div>
+            <div class="form__inner">
+                <div class="form__item">
+                    <label for="userid">User ID <span class="form__notion">(Name or E-mail)</span></label>
+                    <input type="text" class="form__item-input js-form-userid" id="userId" name="userId" tabindex="1" required>
+                    <p class="error"></p>
+                </div>
+                <div class="form__item">
+                    <label for="password">Password</label>
+                    <button class="form__eye js-eye-icon" aria-label="パスワードが表示されます" type="button" tabindex="3"></button><input type="password" class="form__item-input js-form-password" id="password" name="password" aria-describedby="confirm-password-constraints" tabindex="2" required>
+                    <p class="error" id="confirm-password-constraints" data-name="password-error"></p>
+                </div>
+                <p class="form__text"><a class="form__check-link" href="./forgotpassword.html">パスワードをお忘れの方はこちら</a></p>
+                <div class="form__button">
+                    <input type="button" name="submitButton" class="js-submit-button" value="Login" disabled>
+                    <p class="error"></p>
+                </div>
+            </div>
+        </form>
+	</main>
+</Layout>
+
+<style>
+    .form__inner{
+    margin-top: 30px;
+}
+
+.title + .form__inner{
+    margin-top: 46px;
+}
+
+.form__title{
+    display: flex;justify-content: center;align-items: center;
+}
+
+.form__title-text{
+    padding: 15px;
+    color: #83bd75;
+    font-weight: bold;
+}
+
+.form__title-link{
+    padding: 15px;
+    font-size: 24px;
+    color: #ccc;
+    text-decoration-color: #ccc;
+    text-underline-offset: 7px;
+    transition: opacity 0.3s ease-in-out,text-decoration-color 0.3s ease-in-out;
+}
+
+.form__title-link:hover{
+    opacity: 0.6;
+    text-decoration-color: transparent;
+}
+
+.form__title-link.is-active{
+    order: -1;
+}
+
+.form__lead{
+    font-size: 15px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.form__lead + .form__item {
+    margin-top: 36px;
+}
+
+.form__item{
+    position: relative;
+}
+
+.form__item input{
+    position: relative;
+    width: 100%;
+    height: 25px;
+    background: #fff;
+    color: #666;
+    border-bottom: 2px solid #e9e9e9;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form__item input:focus{
+    border-bottom: 2px solid #c0c0c0;
+}
+
+.form__item + .form__item{
+    margin-top: 15px;
+}
+
+.form__notion{
+    font-size: 12px;
+}
+
+.form__required{
+    color: white;
+    background-color: #ee3e52;
+    padding: 2px 5px 2px 4px;
+    border-radius: 6px;
+    font-size: 11px;
+    margin-left: 6px;
+}
+
+.form__check{
+    margin-top: 30px;
+}
+
+.form__check-link, .user-menu__link{
+    cursor: pointer;
+    border-bottom: 1px solid currentColor;
+    text-decoration: none;
+    color: #5e5e5e;
+    transition: opacity 0.3s ease-in-out,border-color 0.3s ease-in-out;
+}
+
+.form__check-link:hover,.user-menu__link:hover{
+    border-color: transparent;
+    opacity: 0.7;
+}
+
+.form__check input[type=checkbox][disabled]{
+    cursor: not-allowed;
+}
+
+.form__attention{
+    display: block;
+    font-size: 13px;
+    padding-left: 15px;
+}
+
+.form__text{
+    margin-top: 15px;
+}
+
+.form__button{
+    margin-top: 45px;
+    cursor: not-allowed;
+}
+
+.form__button--narrow{
+    margin-top: 30px;
+}
+
+.form__button input{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #fff;
+    background-color: #ccc;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.form__button input:not([disabled]) {
+    background-color: #83bd75;
+    pointer-events: auto;
+}
+
+.form__button input:focus:not([disabled]),
+.form__button input:hover:not([disabled]),
+.form__button input:active:not([disabled]){
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.form__button + .form__text{
+    margin-top: 50px;
+}
+
+.form__anchor{
+    margin-top: 40px;
+}
+
+.form__eye{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    margin: auto;
+}
+
+.form__eye:after{
+    display: inline-block;
+    content: '';
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+    background: url('/img/icon-eye-slash.svg') no-repeat center center/contain;
+}
+
+.form__eye.is-open:after{
+    background: url('/img/icon-eye.svg') no-repeat center center/contain;
+}
+</style>
