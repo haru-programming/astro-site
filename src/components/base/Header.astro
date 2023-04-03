@@ -1,0 +1,283 @@
+---
+import '../../styles/reset.css';
+import '../../styles/global.css';
+const title = "haru news";
+---
+
+<header class="header" id="js-header">
+    <div class="header__inner">
+        <h1 class="title title--top title--center" id="js-title"><a href="./" class="header__link">{title}</a></h1>
+        <nav class="header__nav" id="global-nav" data-name="drawer-menu" aria-hidden="true">
+            <div class="header__nav-inner">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item"><a href="./register.html" class="header__link" tabindex="2">Sign up</a></li>
+                    <li class="header__nav-item"><a href="./login.html" class="header__link" tabindex="3">Login</a></li>
+                </ul>
+                <ul class="header__nav-list">
+                    <li class="header__nav-item"><a href="#" class="header__link">Dummy link</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__link">Dummy link</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__link">Dummy link</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__link">Dummy link</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__link">Dummy link</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__link">Dummy link</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__link">Dummy link</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__link">Dummy link</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__link">Dummy link</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__link">Dummy link</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__link">Dummy link</a></li>
+                </ul>
+            </div>
+        </nav>
+        <button type="button" id="js-hamburger-button" class="header__hamburger" aria-controls="global-nav" aria-expanded="false" tabindex="1">
+            <span class="header__hamburger-bar">
+                <span class="header__hamburger-text">メニューを開閉する</span>
+            </span>
+        </button>
+    </div>
+</header>
+
+<script src="../../scripts/drawer-menu.js" />
+    <!-- import '../../scripts/drawer-menu.js'; -->
+<!-- </script> -->
+<style lang="scss">
+    .header{
+    position: relative;
+    padding: 40px;
+    background-color: #fff;
+}
+
+.header__inner{
+    display: flex;justify-content: space-between;align-items: center;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header__link{
+    align-items: center;
+    color: #333;
+    text-decoration-color: transparent;
+    text-underline-offset: 6px;
+    transition: opacity 0.3s ease-in-out, text-decoration-color 0.3s ease-in-out;
+}
+
+.header__link:hover{
+    opacity: 0.6;
+    text-decoration-color: currentColor;
+
+}
+
+
+.header__button{
+    cursor: pointer;
+}
+
+.header__nav{
+    position: fixed;
+    z-index : 1200;
+    opacity: 0;
+    top : 0;
+    color: #000;
+    background: #fff;
+    text-align: center;
+    width: 40%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.header__nav.left{
+    left : -100%;
+    opacity: 1;
+    will-change: left;
+    transition: left ease-in-out;
+}
+
+.header__nav.right{
+    right : -100%;
+    opacity: 1;
+    will-change: right;
+    transition: right ease-in-out;
+}
+
+.header__nav.left.is-open{
+    left: 0;
+}
+.header__nav.right.is-open{
+    right: 0;
+}
+
+.header__nav-inner{
+    width: 75%;
+    padding: 100px 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header__nav-list:nth-child(2){
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px dotted #ccc;
+}
+
+.header__nav-item{
+    font-size: 20px;
+}
+
+.header__nav-item + .header__nav-item{
+    margin-top: 25px;
+}
+
+.header__hamburger{
+    display: block;
+    position: absolute;
+    z-index: 1250;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 48px;
+    height: 48px;
+    margin: auto;
+    background-color: #ccc;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.header__hamburger-bar{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 20px;
+    height: 2px;
+    pointer-events: none;
+    background-color: #fff;
+
+    transition: top 0.3s ease-in-out,transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+
+.header__hamburger-bar:before, .header__hamburger-bar:after{
+    display: block;
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    transition: inherit;
+}
+
+.header__hamburger-bar:before{
+    top: -5px;
+}
+
+.header__hamburger-bar:after{
+    top: 5px;
+}
+
+.header__hamburger[aria-expanded="true"] .header__hamburger-bar{
+    background-color: transparent;
+}
+
+.header__hamburger[aria-expanded="true"] .header__hamburger-bar:before,
+.header__hamburger[aria-expanded="true"] .header__hamburger-bar:after{
+    top: 0;
+    background-color: #fff;
+}
+
+.header__hamburger[aria-expanded="true"] .header__hamburger-bar:before{
+    transform: rotate(45deg);
+}
+
+.header__hamburger[aria-expanded="true"] .header__hamburger-bar:after{
+    transform: rotate(-45deg);
+}
+
+.header__hamburger-text{
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+}
+
+.user-menu{
+    display: none;
+    position: absolute;
+    top: 100px;
+    right: 40px;
+    z-index: 1300;
+    width: 300px;
+    height: 400px;
+    text-align: center;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
+}
+
+.user-menu.is-active{
+    display: block;
+}
+
+.user-menu__icon{
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 30px;
+    color: #000;
+}
+
+.user-menu__img{
+    display: block;
+    width: 100px;
+    margin: 0 auto;
+}
+
+.user-menu__name{
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.user-menu__list{
+    width: 90%;
+    height: 100px;
+    padding: 20px 15px;
+    margin: 30px auto 0 auto;
+    background-color: #ebeaea;
+    border-radius: 10px;
+}
+
+.user-menu__item + .user-menu__item{
+    margin-top: 10px;
+}
+
+.user-menu__button{
+    display: flex;justify-content: center;align-items: center;
+    cursor: pointer;
+    width: 100%;
+    padding: 15px 20px;
+    margin: 30px auto 0 auto;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    color: #fff;
+    background-color: #5e5e5e;
+    border-radius: 30px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.user-menu__button:focus,.user-menu__button:hover{
+    opacity: 0.7;
+}
+
+</style>

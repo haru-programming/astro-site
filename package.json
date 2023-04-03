@@ -7,9 +7,17 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint:html": "markuplint \"./src/**/*.astro\""
   },
   "dependencies": {
-    "astro": "^2.1.7"
+    "astro": "^2.1.7",
+    "chance": "^1.1.11",
+    "date-fns": "^2.29.3"
+  },
+  "devDependencies": {
+    "@markuplint/astro-parser": "^3.5.0",
+    "markuplint": "^3.5.0",
+    "sass": "^1.60.0"
   }
 }
